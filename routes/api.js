@@ -4,11 +4,6 @@ var router = express.Router();
 var PARTICLE_DB = require("../models/particle");
 
 
-router.get("/test", function (req, res) {
-   var msg = { "response": "OK" }
-   res.status(201).json(msg);
-});
-
 router.get('/readAll', function (req, res) {
    PARTICLE_DB.find(function (err, docs) {
       if (err) {
@@ -22,7 +17,7 @@ router.get('/readAll', function (req, res) {
 });
 
 router.post('/read_patient_data', function (req, res) {
-   PARTICLE_DB.find({ device_id: req.body.device_sn }, function (err, docs) {
+   PARTICLE_DB.find({ deviceID: req.body.device_sn }, function (err, docs) {
       if (err) {
          let msgStr = `Something wrong....`;
          res.status(201).json({ message: msgStr });
@@ -42,7 +37,7 @@ router.post('/weekly_patient_data', function (req, res) {
    PARTICLE_DB.find({
       $and: [
          {
-            device_id: req.body.device_sn
+            deviceID: req.body.device_sn
          },
          {
             createdAt: { $gte: start, $lt: end }
@@ -68,7 +63,7 @@ router.post('/daily_patient_data', function (req, res) {
    PARTICLE_DB.find({
       $and: [
          {
-            device_id: req.body.device_sn
+            deviceID: req.body.device_sn
          },
          {
             createdAt: { $gte: start, $lt: end }

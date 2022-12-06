@@ -5,7 +5,6 @@ const physicianSchema = new db.Schema({
     Last_name:     String,
     Email: String,
     password: String,
-    
  });
 
 
