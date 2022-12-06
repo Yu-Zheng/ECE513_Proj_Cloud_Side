@@ -153,14 +153,6 @@ function formValidate(){
             Last_name:     $("#Last_name_PA").val(),
             Email:         $("#Email_PA").val(),
             password:      $("#Password_PA").val(),
-//            First_name:    firstInput,
-//            Last_name:     lastInput,
-//            Email:         emailInput,
-//            password:      passInput,
-//let firstInput=document.getElementById("First_name_PA");
-//let lastInput=document.getElementById("Last_name_PA");
-//let emailInput=document.getElementById("Email_PA");
-//let passInput=document.getElementById("Password_PA");
         };
     
         $.ajax({
