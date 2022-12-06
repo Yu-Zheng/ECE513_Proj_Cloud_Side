@@ -14,12 +14,6 @@ $(function () {
     })
         .done(function (data, textStatus, jqXHR) {
             // $('#rxData').html(JSON.stringify(data, null, 2));
-            $('#first_name').val(data[0].First_name);
-            $('#last_name').val(data[0].Last_name);
-            $('#email').val(data[0].Email);
-            $('#physician').val(data[0].physician);
-            $('.font-weight-bold').html(data[0].First_name);
-            $('.text-black-50').html(data[0].Email);
             weekly_report(data[0]);
             daily_report(data[0]);
         })
@@ -30,7 +24,7 @@ $(function () {
 
 function weekly_report(Data) {
     let txdata = {
-        _id: Data._id,
+        device_sn: Data.device_sn,
         current_date: new Date(),
     };
     $.ajax({
@@ -105,7 +99,7 @@ function weekly_report(Data) {
 
 function daily_report(Data) {
     let txdata = {
-        _id: Data._id,
+        device_sn: Data.device_sn,
         current_date: new Date(),
     };
     $.ajax({
