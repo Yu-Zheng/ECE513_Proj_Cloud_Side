@@ -9,6 +9,14 @@ This is a ECE513 final project server side code, and this project is a cloud hea
 - Chun-Lin Huang
 - Alonso Montesinos
 
+Get Start
+---------
+Using node.js to run the server
+```
+node app.js
+```
+If successful run the server, you will see the "Listening on port: 3000" message.
+Then you can check the application on your web browser using http://localhost:3000
 
 Require Modules
 ----------
