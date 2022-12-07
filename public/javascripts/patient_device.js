@@ -3,7 +3,6 @@
 let Data;
 
 $(function (){
-    $('#btnLogOut').click(logout);
     $('#btnUpdate').click(Update_device);
 
     $.ajax({
@@ -18,14 +17,9 @@ $(function (){
         Data = data[0];
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-        window.location.replace("display.html");
+        window.location.replace("../display.html");
     });
 });
-
-function logout() {
-    localStorage.removeItem("token");
-    window.location.replace("index.html");
-}
 
 function Update_device(){
     if ($('#device_name').val() === "") {

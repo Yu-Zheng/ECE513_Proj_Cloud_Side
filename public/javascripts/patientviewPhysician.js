@@ -3,10 +3,23 @@
 let Data;
 
 $(function () {
-    $('#btnLogOut').click(logout);
-    $('#btnUpdate').click(Update_Info);
     $('#select_patient').change(Get_Chart);
-    read_all_patient()
+
+
+    $.ajax({
+        url: '/physician/status',
+        method: 'GET',
+        headers: { 'x-auth': window.localStorage.getItem("token") },
+        dataType: 'json'
+    })
+        .done(function (data, textStatus, jqXHR) {
+            read_all_patient()
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            window.location.replace("../display.html");
+        });
+
+
 });
 
 function read_all_patient() {
@@ -31,7 +44,7 @@ function read_all_patient() {
                 var name = res.First_name[i]
                 var device_sn = res.device_sn[i]
                 $("#select_patient").append(`<option value="${device_sn}">${name}</option>`);
-              }
+            }
             console.log(res);
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
@@ -39,7 +52,7 @@ function read_all_patient() {
         });
 }
 
-function Get_Chart(){
+function Get_Chart() {
     Device_SN = $('#select_patient').val();
     weekly_report(Device_SN);
     daily_report(Device_SN);
@@ -216,33 +229,4 @@ function max(Data_Arr) {
     Max = Math.max.apply(Math, filtered);
     console.log(Max);
     return Max;
-}
-
-function logout() {
-    localStorage.removeItem("token");
-    window.location.replace("index.html");
-}
-
-function Update_Info() {
-    let txdata = {
-        _id: Data._id,
-        First_name: $('#first_name').val(),
-        Last_name: $('#last_name').val(),
-        Email: $('#email').val(),
-        physician: $('#physician').val(),
-    };
-
-    $.ajax({
-        url: '/patient/update_info',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(txdata),
-        dataType: 'json'
-    })
-        .done(function (data, textStatus, jqXHR) {
-            $('#rxData').html(data.message);
-        })
-        .fail(function (data, textStatus, jqXHR) {
-            $('#rxData').html(Jdata.message);
-        });
 }
