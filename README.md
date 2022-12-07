@@ -1,7 +1,7 @@
 ECE513 Final Project (Server Side) - Team 3
 ======
 
-This is a ECE513 final project server side code, and this project is a cloud heartrate monitor system for patient and physician. It allows patient easy to setup their devices to upload data to server, and physician can easy to check their reports.
+This is a ECE513 final project code of server side, and this project is a cloud heartrate monitor system for patient and physician. It allows patient easy to setup their devices to upload data to server, and physician can easy to check their reports.
 
 **Team members:**
 
@@ -34,7 +34,7 @@ Require Modules
 APIs
 ----------
 
-Data API – Route: /api/\*
+- Data API – Route: /api/\*
 
 |APIs|Description|HTTP Method|
 | :- | :- | :- |
@@ -44,7 +44,7 @@ Data API – Route: /api/\*
 |Daily\_patient\_data|Return one day data from a patient|POST|
 |Particle\_data|For receive data from Particle webhook|POST|
 
-Patient API – Route: /patient/\*
+- Patient API – Route: /patient/\*
 
 |APIs|Description|HTTP Method|
 | :- | :- | :- |
@@ -54,7 +54,7 @@ Patient API – Route: /patient/\*
 |update\_device|Update a device name and device SN|POST|
 |update\_info|Update the user info|POST|
 
-Physician API – Route: /patient/\*
+- Physician API – Route: /patient/\*
 
 |APIs|Description|HTTP Method|
 | :- | :- | :- |
