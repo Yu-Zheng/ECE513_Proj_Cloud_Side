@@ -56,7 +56,7 @@ router.post('/weekly_patient_data', function (req, res) {
 
 router.post('/daily_patient_data', function (req, res) {
    const end = moment(req.body.current_date).startOf('day').toDate();
-   const start = moment(req.body.current_date).startOf('day').subtract(7, 'day').toDate();
+   const start = moment(req.body.current_date).startOf('day').subtract(1, 'day').toDate();
    console.log(end);
    console.log(start);
 
