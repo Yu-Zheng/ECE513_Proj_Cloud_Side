@@ -15,7 +15,7 @@ Using node.js to run the server
 ```
 node app.js
 ```
-If successful run the server, you will see the "Listening on port: 3000" message.
+If successful run the server, you will see the "Listening on port: 3000" message.  
 Then you can check the application on your web browser using http://localhost:3000
 
 Require Modules
