@@ -4,7 +4,20 @@ let Data;
 
 $(function () {
     $('#select_patient').change(Get_Chart);
-    read_all_patient()
+
+    $.ajax({
+        url: '/physician/status',
+        method: 'GET',
+        headers: { 'x-auth': window.localStorage.getItem("token") },
+        dataType: 'json'
+    })
+        .done(function (data, textStatus, jqXHR) {
+            read_all_patient()
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            window.location.replace("../display.html");
+        });
+
 });
 
 function read_all_patient() {
@@ -28,14 +41,14 @@ function read_all_patient() {
             for (let i = 0; i < res.First_name.length; i++) {
                 var name = res.First_name[i]
                 var device_sn = res.device_sn[i]
-                let Reports= `<div style="margin: auto; height: 40vh; width: 80vh;">
+                let Reports = `<div style="margin: auto; width: 90vw;">
                     <h1>${name} - Weekly Summary View </h1>
                     <canvas id="${name}-Report"></canvas>
                 </div><br><br><br>`
                 let ChartID = `${name}-Report`
                 $("#Show_All_Patient").append(Reports);
                 Get_Chart(device_sn, ChartID)
-              }
+            }
             console.log(res);
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
@@ -43,7 +56,7 @@ function read_all_patient() {
         });
 }
 
-function Get_Chart(Device_SN, ChartID){
+function Get_Chart(Device_SN, ChartID) {
     weekly_report(Device_SN, ChartID);
 }
 
