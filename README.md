@@ -9,6 +9,12 @@ This is a ECE513 final project code of server side, and this project is a cloud 
 - Chun-Lin Huang
 - Alonso Montesinos
 
+Videos:
+---------
+Pitch Video: https://youtu.be/ty9yZhvNAYk  
+User Experience: https://youtu.be/9tO-23r097U  
+Code Implements: https://youtu.be/la9dl3jB_kI
+
 Get Start
 ---------
 Using node.js to run the server
